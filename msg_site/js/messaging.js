@@ -4,6 +4,7 @@ angular.module('myMessages', [])
         console.log("Inside the MessagingController ...");
 
         var messagingList = this;
+        messagingList.messageArray = [];
 
         messagingList.messages = [{
                 text: 'learn AngularJS',
@@ -28,16 +29,14 @@ angular.module('myMessages', [])
                 url: 'http://localhost:5000/messaging/api/v1.0/messages'
             }).then(function successCallback(response) {
               console.log("success!!");
-              console.log(response.data);
-                // this callback will be called asynchronously
-                // when the response is available
+              var temp = "[" + response.data.messages + "]";
+              messagingList.messageArray = JSON.parse(temp);
 
             }, function errorCallback(response) {
               console.error("ERROR " + response);
                 // called asynchronously if an error occurs
                 // or server returns response with an error status.
             });
-
 
         };
 
