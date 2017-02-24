@@ -1,4 +1,4 @@
-angular.module('myMessages', [])
+angular.module('myMessages')
     .controller('MessagingController', function($scope, $http) {
 
         console.log("Inside the MessagingController ...");
@@ -44,12 +44,15 @@ angular.module('myMessages', [])
 
 
         messagingList.addMessage = function() {
-            messagingList.messages.push({
-                from: 'Me',
-                to: 'You',
-                text: messagingList.msgText,
-                done: false
-            });
+
+          console.log("inside addMessage function() ...");
+
+            // messagingList.messages.push({
+            //     from: 'Me',
+            //     to: 'You',
+            //     text: messagingList.msgText,
+            //     done: false
+            // });
             messagingList.msgText = '';
 
         };
