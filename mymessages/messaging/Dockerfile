@@ -3,6 +3,6 @@ FROM python:2.7-onbuild
 
 MAINTAINER dave.zimmer (dsendtec@gmail.com)
 
-RUN pip install flask
+RUN pip install pika
 
-CMD ["python", "./app.py"]
+CMD ["python", "./receiver.py"]

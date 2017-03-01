@@ -10,11 +10,12 @@ angular.module('myMessages', ['ngRoute'])
     })
     .when("/messages", {
 
-      templateUrl : "messages.html"
-      // controller : "MessagingController"
+      templateUrl : "messages.html",
+      controller : "MessagingController as msgCtrl"
     })
     .when("/create", {
-      templateUrl : "create_message.html"
+      templateUrl : "create_message.html",
+      controller : "MessagingController as msgCtrl"
     });
-    
+
   });
