@@ -6,6 +6,9 @@ angular.module('myMessages')
         var messagingList = this;
         messagingList.messageArray = [];
 
+        messagingList.to = null;
+        messagingList.msg = null;
+
         messagingList.messages = [{
                 text: 'learn AngularJS',
                 done: true,
@@ -47,13 +50,10 @@ angular.module('myMessages')
 
           console.log("inside addMessage function() ...");
 
-            // messagingList.messages.push({
-            //     from: 'Me',
-            //     to: 'You',
-            //     text: messagingList.msgText,
-            //     done: false
-            // });
-            messagingList.msgText = '';
+          // construct json to send to adding a message api
+
+
+          messagingList.msgText = '';
 
         };
 

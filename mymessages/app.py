@@ -80,12 +80,11 @@ def create_message():
         abort(400)
 
     message = {
-        'id': messages[-1]['id'] + 1,
         'title': request.json['message']['title'],
         'description': request.json['message']['description'],
-        'done': 'false'
+        'done': 'false',
+        'to': request.json['message']['to']
     }
-    messages.append(message)
 
     drop_message(message)
 
