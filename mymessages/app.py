@@ -91,6 +91,11 @@ def create_message():
     return jsonify({'message': message}), 201
 
 
+@app.route('/messaging/api/v1.0/messages', methods=['DELETE'])
+def clear_messages():
+    print("In DELETE for messages")
+
+    return jsonify({'message': 'resource successfully deleted'}), 200
 
 
 

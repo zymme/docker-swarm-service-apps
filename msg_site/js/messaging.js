@@ -8,6 +8,7 @@ angular.module('myMessages')
 
         messagingList.to = null;
         messagingList.msg = null;
+        messagingList.title = null;
 
         messagingList.messages = [{
                 text: 'learn AngularJS',
@@ -48,12 +49,47 @@ angular.module('myMessages')
 
         messagingList.addMessage = function() {
 
-          console.log("inside addMessage function() ...");
+          console.log("Entered addMessage() ...");
 
-          // construct json to send to adding a message api
+          var msg_json = {
+            "message": {
+              "title": messagingList.title,
+              "to": messagingList.to,
+              "description": messagingList.msg
+            }
+           }
+
+          var jsondata = JSON.stringify(msg_json);
+          console.log(jsondata);
+
+          $http.post("http://localhost:5000/messaging/api/v1.0/messages", jsondata)
+            .then(function(response) {
+              console.log("SUCCESS! " + response);
+
+            }, function(err) {
+              console.error("ERROR..." + err);
+
+            });
+
+          messagingList.title = '';
+          messagingList.msg = '';
+          messagingList.to = '';
+
+        };
 
 
-          messagingList.msgText = '';
+        messagingList.clearAll = function() {
+
+          console.log("In clearAll() ...");
+
+          $http.delete("http://localhost:5000/messaging/api/v1.0/messages")
+            .then(function(response) {
+              console.log("SUCCESS DELETE CALL!");
+
+            }, function(err) {
+              console.error("ERROR IN DELETE CALL ..." + err);
+            });
+
 
         };
 

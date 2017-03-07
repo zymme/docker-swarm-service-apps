@@ -16,6 +16,10 @@ angular.module('myMessages', ['ngRoute'])
     .when("/create", {
       templateUrl : "create_message.html",
       controller : "MessagingController as msgCtrl"
+    })
+    .when("/clearall", {
+      templateUrl : "clear_all_messages.html",
+      controller : "MessagingController as msgCtrl"
     });
 
   });
