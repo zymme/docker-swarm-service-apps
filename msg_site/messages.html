@@ -5,11 +5,6 @@
         <h2>List of Current Messages</h2>
         <ul class="list-group">
           <!--<li ng-repeat="msg in msgCtrl.messages" class="list-group-item"><b>From:</b> {{msg.from}} <b>To:</b> {{msg.to}} <b>Message:</b> {{msg.text}}</li>-->
-          <li ng-repeat="m in msgCtrl.messageArray" class="list-group-item"><b>TITLE:</b> {{m.title}} <b>DESC:</b> {{m.description}} <b>ID:</b> {{m.id}}</li>
+          <li ng-repeat="m in msgCtrl.messageArray" class="list-group-item"><b>TO:</b> {{m.to}} <b>TITLE:</b> {{m.title}} <b>DESC:</b> {{m.description}}</li>
         </ul>
-        <form ng-submit="msgCtrl.addMessage()">
-          <input type="text" ng-model="msgCtrl.msgText"  size="30"
-                 placeholder="add new message here">
-          <input class="btn-primary" type="submit" value="add">
-      </form>
     </div>

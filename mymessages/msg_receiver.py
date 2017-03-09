@@ -15,6 +15,8 @@ def save_data(message):
     json_data = json.loads(jsonobj)
 
     client = MongoClient("mongodb://localhost:27017")
+    # use IP of main container - but ideally use --net-alias for the docker network
+    
     db = client.mydb
 
     print("Attempting to insert mongo document ...")

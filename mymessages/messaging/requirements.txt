@@ -1,5 +1,3 @@
-
 pika
 pymongo
 uuid
-flask_cors

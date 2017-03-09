@@ -7,6 +7,7 @@ from pymongo import MongoClient
 from bson.json_util import dumps
 from bson import json_util
 from flask_cors import CORS, cross_origin
+import uuid
 
 
 import json
@@ -59,10 +60,10 @@ def get_messages():
 @app.route('/messaging/api/v1.0/messages/<int:message_id>', methods=['GET'])
 def get_message(message_id):
 
-    message = [message for message in messages if message['id'] == message_id]
-    if len(message) == 0:
-        abort(404)
-    return jsonify({'message': message[0]})
+    # message = [message for message in messages if message['id'] == message_id]
+    # if len(message) == 0:
+    #     abort(404)
+    return jsonify({'message': 'not implemented yet'}), 200
 
 
 @app.route('/messaging/api/v1.0/messages', methods=['POST'])
@@ -71,7 +72,8 @@ def create_message():
     print("In POST for messages")
     print(request.json)
 
-    #print(request.json['message']['title'])
+    myid = uuid.uuid4()
+    print("Generated guid for message {}".format(myid))
 
     if not request.json:
         abort(400)
@@ -80,6 +82,7 @@ def create_message():
         abort(400)
 
     message = {
+        'id': str(myid),
         'title': request.json['message']['title'],
         'description': request.json['message']['description'],
         'done': 'false',
@@ -95,7 +98,18 @@ def create_message():
 def clear_messages():
     print("In DELETE for messages")
 
-    return jsonify({'message': 'resource successfully deleted'}), 200
+    client = MongoClient("mongodb://localhost:27017")
+    db = client.mydb
+
+    result = db.messaging.delete_many({})
+
+    if result.deleted_count > 0:
+        return jsonify({'message': 'resource successfully deleted'}), 200
+    else:
+        return jsonify({'message': 'resource not deleted'}), 400
+
+
+
 
 
 

@@ -10,9 +10,14 @@ def drop_message(message):
     try:
         print("Attempting to connect to rabbitmq ...")
 
-        connection = pika.BlockingConnection(pika.ConnectionParameters(
-                   'localhost'))
+        # connection = pika.BlockingConnection(pika.ConnectionParameters(
+        #            'localhost'))
 
+        credentials = pika.PlainCredentials('mydev', 'p@ssIt!')
+        parameters = pika.ConnectionParameters('192.241.227.72', 5672, '/', credentials)
+
+        connection = pika.BlockingConnection(parameters)
+        
         channel = connection.channel()
 
         print("connected to broker on localhost ...")
