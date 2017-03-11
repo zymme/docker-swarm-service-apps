@@ -1,0 +1,7 @@
+
+version: '2'
+services:
+  msg_api:
+    build: .
+    ports:
+      - "5000:5000"
