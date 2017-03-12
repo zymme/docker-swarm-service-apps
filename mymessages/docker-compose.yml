@@ -9,6 +9,24 @@ services:
     networks:
       - mymsgapinet
 
+  mymongodb:
+
+    image: mymongo:v1.0
+    ports:
+      - "27017:27017"
+
+    networks:
+      mymsgapinet:
+        aliases:
+          - zedsmongodb
+
+  msg_rcvr:
+
+    image: msg_rcvr:v1.3
+
+    networks:
+      - mymsgapinet 
+
 networks:
   mymsgapinet:
 

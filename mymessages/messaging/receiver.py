@@ -14,7 +14,8 @@ def save_data(message):
     jsonobj = strs.replace('u"', '"')
     json_data = json.loads(jsonobj)
 
-    client = MongoClient("mongodb://192.241.227.72:27017")
+    client = MongoClient("mongodb://zedsmongodb:27017")
+    # client = MongoClient("mongodb://192.241.227.72:27017")
     # use IP of main container - but ideally use --net-alias for the docker network
 
     db = client.mydb
