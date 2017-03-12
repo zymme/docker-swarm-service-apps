@@ -1,7 +1,18 @@
 
-version: '2'
+version: '3'
 services:
   msg_api:
-    build: .
+    image: msg_api:v1.4
     ports:
       - "5000:5000"
+
+    networks:
+      - mymsgapinet
+
+networks:
+  mymsgapinet:
+
+
+# next step
+  # build image for mongo - add that to services list here and also set the networks attribute on it
+  # test the 'post' operation :)  !!!
