@@ -25,7 +25,19 @@ services:
     image: msg_rcvr:v1.3
 
     networks:
-      - mymsgapinet 
+      - mymsgapinet
+
+  myrabbit:
+    image: myrabbit:v1.1
+    ports:
+      - 5672:5672
+      - 15672:15672
+
+    networks:
+      mymsgapinet:
+        aliases:
+          - zedsmongodb
+
 
 networks:
   mymsgapinet:
