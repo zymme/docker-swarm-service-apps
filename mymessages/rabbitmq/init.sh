@@ -1,10 +1,10 @@
 #!/bin/sh
 
 # Create Default RabbitMQ setup
-( sleep 10 ; \
+( sleep 12 ; \
 
 # Create users
-rabbitmqctl add_user mydev p@ssIt!
+rabbitmqctl add_user mydev p@ssIt
 
 
 # Set user rights

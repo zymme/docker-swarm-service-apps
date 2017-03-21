@@ -41,7 +41,7 @@ CORS(app)
 @app.route('/messaging/api/v1.0/messages', methods=['GET'])
 def get_messages():
 
-    client = MongoClient("mongodb://localhost:27017")
+    client = MongoClient("mongodb://zedsmongodb:27017")
     db = client.mydb
 
     result = db.messaging.find()
@@ -98,7 +98,7 @@ def create_message():
 def clear_messages():
     print("In DELETE for messages")
 
-    client = MongoClient("mongodb://localhost:27017")
+    client = MongoClient("mongodb://zedsmongodb:27017")
     db = client.mydb
 
     result = db.messaging.delete_many({})
@@ -107,10 +107,6 @@ def clear_messages():
         return jsonify({'message': 'resource successfully deleted'}), 200
     else:
         return jsonify({'message': 'resource not deleted'}), 400
-
-
-
-
 
 
 

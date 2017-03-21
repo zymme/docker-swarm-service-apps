@@ -32,7 +32,7 @@ print("Attempting to connect to the rabbitmq remote (zedsrabbitmq) broker ...")
 
 try:
 
-    credentials = pika.PlainCredentials('mydev', 'p@ssIt!')
+    credentials = pika.PlainCredentials('mydev', 'p@ssIt')
     # parameters = pika.ConnectionParameters('192.241.227.72', 5672, '/', credentials)
     parameters = pika.ConnectionParameters('zedsmongodb', 5672, '/', credentials)
 

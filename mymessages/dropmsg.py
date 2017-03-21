@@ -13,7 +13,7 @@ def drop_message(message):
         # connection = pika.BlockingConnection(pika.ConnectionParameters(
         #            'localhost'))
 
-        credentials = pika.PlainCredentials('mydev', 'p@ssIt!')
+        credentials = pika.PlainCredentials('mydev', 'p@ssIt')
         # parameters = pika.ConnectionParameters('192.241.227.72', 5672, '/', credentials)
         parameters = pika.ConnectionParameters('zedsmongodb', 5672, '/', credentials)
 
@@ -21,7 +21,7 @@ def drop_message(message):
 
         channel = connection.channel()
 
-        print("connected to broker on zedsrabbitmq ...")
+        print("connected to broker ...")
 
         channel.queue_declare(queue='messaging')
 

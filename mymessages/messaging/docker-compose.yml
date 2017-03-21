@@ -1,36 +1,24 @@
 
 version: '3'
 services:
-  msg_api:
-    image: msg_api:v1.4
-    ports:
-      - "5000:5000"
 
-    networks:
-      - mymsgapinet
-
-  mymongodb:
-
-    image: mymongo:v1.0
-    ports:
-      - "27017:27017"
+  msg_rcvr:
+    image: msg_rcvr:v1.3
 
     networks:
       mymsgapinet:
         aliases:
           - zedsmongodb
 
-  myrabbit:
-    image: myrabbit:v1.1
+  mynginx:
+    image: mynginx:v1.6
     ports:
-      - 5672:5672
-      - 15672:15672
+      - 8882:8882
 
     networks:
       mymsgapinet:
         aliases:
           - zedsmongodb
-
 
 networks:
   mymsgapinet:
